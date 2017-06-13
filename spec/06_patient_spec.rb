@@ -1,12 +1,12 @@
 require "spec_helper"
 
 describe "Patient" do
-  let!(:martin) { Patient.new("Martin Jones") } 
+  let!(:martin) { Patient.new("Martin Jones") }
   let!(:doctor_who) { Doctor.new("The Doctor") }
   let!(:appointment) { Appointment.new("Friday, January 32nd", doctor_who) }
 
-  describe "#new" do 
-    it "initializes with a name" do 
+  describe "#new" do
+    it "initializes with a name" do
       expect{Patient.new("Sophie")}.to_not raise_error
     end
   end
@@ -16,11 +16,11 @@ describe "Patient" do
       martin.add_appointment(appointment)
       expect(martin.appointments).to include(appointment)
       expect(appointment.patient).to eq(martin)
-    end 
+    end
   end
 
-  describe "#doctors" do 
-    it "has many doctors through appointments" do 
+  describe "#doctors" do
+    it "has many doctors through appointments" do
       martin.add_appointment(appointment)
       expect(martin.doctors).to include(doctor_who)
     end
